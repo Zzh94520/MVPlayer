@@ -3,24 +3,27 @@ package com.example.zzh.qqplayer;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
+import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
 
 import base.BaseActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import factory.FactoryFragment;
 
 public class MainActivity extends BaseActivity
 {
-    @BindView(R.id.home_Container)
-    FrameLayout                      mHomeContainer;
     @BindView(R.id.bottom_Bar)
-    com.roughike.bottombar.BottomBar mBottomBar;
-
+    BottomBar   mBottomBar;
+    @BindView(R.id.home_container)
+    FrameLayout mHomeContainer;
 
     @Override
     protected int getLayoutResId()
@@ -33,23 +36,25 @@ public class MainActivity extends BaseActivity
     {
         super.init();
         mBottomBar.setOnTabSelectListener(tabSelectListener);
+//        RecyclerView.LayoutManager layoutManager = mMainRecyclerview.getLayoutManager();
     }
 
-    private OnTabSelectListener tabSelectListener = new OnTabSelectListener() {
+    private OnTabSelectListener tabSelectListener = new OnTabSelectListener()
+    {
         @Override
         public void onTabSelected(@IdRes int tabId)
         {
-            switch (tabId)
-            {
-                case R.id.home:
-                    break;
-                case R.id.mv:
-                    break;
-                case R.id.vbang:
-                    break;
-                case R.id.musiclist:
-                    break;
-            }
+            //拿到fragmentfactory的实例
+            FactoryFragment factoryFragment = FactoryFragment.getInstance();
+            //拿到fragment的管理器
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            //创建一个事物
+            FragmentTransaction transaction = fragmentManager.beginTransaction();
+            //替换fragment
+            transaction.replace(R.id.home_container, factoryFragment.getFragment(tabId));
+            //提交事物
+            transaction.commit();
+
         }
     };
 

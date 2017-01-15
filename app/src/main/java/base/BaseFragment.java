@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import butterknife.ButterKnife;
+
 /**
  * 类    名:  BaseFragment
  * 创 建 者:  Zzh
@@ -24,9 +26,12 @@ public abstract class BaseFragment extends Fragment
                              @Nullable Bundle savedInstanceState)
     {
         View rootView = inflater.inflate(getFragmentId(), null);
+        ButterKnife.bind(this,rootView);
+        init();
         return rootView;
     }
 
     protected abstract int getFragmentId();
 
+    protected void init(){}
 }

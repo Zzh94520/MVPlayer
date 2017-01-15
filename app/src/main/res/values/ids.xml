@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item name="splash_iv" type="id">splash_iv</item>
-    <item name="settings_menu" type="id">settings_menu</item>
-    <item name="home" type="id">home</item>
-    <item name="mv" type="id">mv</item>
-    <item name="vbang" type="id">vbang</item>
-    <item name="musiclist" type="id">musiclist</item>
-    <item name="home_Container" type="id">homecontainer</item>
-    <item name="bottom_Bar" type="id">bottombar</item>
+    <item name="splash_iv" type="id"/>
+    <item name="settings_menu" type="id"/>
+    <item name="home" type="id"/>
+    <item name="mv" type="id"/>
+    <item name="vbang" type="id"/>
+    <item name="musiclist" type="id"/>
+    <item name="bottom_Bar" type="id"/>
+    <item name="music_list_tv" type="id"/>
+    <item name="fragment_vbang" type="id"/>
+    <item name="fragment_mv" type="id"/>
+    <item name="activity_settings_fragment" type="id"/>
+    <item name="home_container" type="id"/>
+    <item name="home_recyclerview" type="id"/>
+    <item name="home_recycler" type="id"/>
+    <item name="item_iv" type="id"/>
+    <item name="item_tv_title" type="id"/>
+    <item name="item_tv" type="id"/>
 </resources>
