@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <tab
+        id="@id/home"
+        icon="@mipmap/ic_bottom_home_icon"
+        title="@string/home" />
+    <tab
+        id="@id/mv"
+        icon="@mipmap/ic_bottom_mv_unselect"
+        title="@string/mv" />
+    <tab
+        id="@id/vbang"
+        icon="@mipmap/ic_bottom_vlist_unselect"
+        title="@string/vbang" />
+    <tab
+        id="@id/musiclist"
+        icon="@mipmap/ic_bottom_mvlist_unselect"
+        title="@string/musiclist" />
+
+</tabs>

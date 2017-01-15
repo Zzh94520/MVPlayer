@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="splash_iv" type="id">splash_iv</item>
+    <item name="settings_menu" type="id">settings_menu</item>
+    <item name="home" type="id">home</item>
+    <item name="mv" type="id">mv</item>
+    <item name="vbang" type="id">vbang</item>
+    <item name="musiclist" type="id">musiclist</item>
+    <item name="home_Container" type="id">homecontainer</item>
+    <item name="bottom_Bar" type="id">bottombar</item>
+</resources>
