@@ -7,8 +7,8 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.HomeBean;
-import widget.MyRecyclerViewItem;
+import model.MusicListBean;
+import widget.MusicRecyclerViewItem;
 
 /**
  * 类    名:  HomeRecycleAdapter
@@ -18,33 +18,33 @@ import widget.MyRecyclerViewItem;
  * 更新时间:  2017/1/15: 20:41$
  * 描    述： ${TODO}
  */
-public class HomeRecycleAdapter extends RecyclerView.Adapter<HomeRecycleAdapter.MyViewHolder>
+public class MusicListRecycleAdapter extends RecyclerView.Adapter<MusicListRecycleAdapter.MyViewHolder>
 {
-    private List<HomeBean> mBeanList = new ArrayList<>();
+    private List<MusicListBean.PlayListsBean> mBeanList = new ArrayList<>();
     private Context mContext;
-    public HomeRecycleAdapter(Context context)
+    public MusicListRecycleAdapter(Context context)
     {
         mContext = context;
     }
 
-    public HomeRecycleAdapter(Context context, List<HomeBean> homeBeanList)
+    public MusicListRecycleAdapter(Context context, List<MusicListBean.PlayListsBean> musicListBeanList)
     {
         mContext = context;
-        this.mBeanList = homeBeanList;
+        this.mBeanList = musicListBeanList;
     }
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
-        MyViewHolder viewHolder = new MyViewHolder(new MyRecyclerViewItem(mContext));
+        MyViewHolder viewHolder = new MyViewHolder(new MusicRecyclerViewItem(mContext));
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position)
     {
-        HomeBean homeBean = mBeanList.get(position);
-        holder.homeViewHolder.bind(homeBean);
+        MusicListBean.PlayListsBean musicListBean = mBeanList.get(position);
+        holder.musicListViewHolder.bind(musicListBean);
     }
 
     @Override
@@ -55,11 +55,11 @@ public class HomeRecycleAdapter extends RecyclerView.Adapter<HomeRecycleAdapter.
 
     class MyViewHolder extends RecyclerView.ViewHolder
     {
-        private MyRecyclerViewItem homeViewHolder;
-        public MyViewHolder(MyRecyclerViewItem itemView)
+        private MusicRecyclerViewItem musicListViewHolder;
+        public MyViewHolder(MusicRecyclerViewItem itemView)
         {
             super(itemView);
-            homeViewHolder = itemView;
+            musicListViewHolder = itemView;
         }
     }
 }

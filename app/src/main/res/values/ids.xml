@@ -17,4 +17,11 @@
     <item name="item_iv" type="id"/>
     <item name="item_tv_title" type="id"/>
     <item name="item_tv" type="id"/>
+    <item name="home_swipe_refresh" type="id"/>
+    <item name="item_avatar" type="id"/>
+    <item name="item_description" type="id"/>
+    <item name="music_list_recycler" type="id"/>
+    <item name="music_list_swipe_refresh" type="id"/>
+    <item name="music_list_recyclerview" type="id"/>
+    <item name="item_count" type="id"/>
 </resources>

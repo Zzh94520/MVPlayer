@@ -1,8 +1,10 @@
 package fragment;
 
-import com.example.zzh.qqplayer.R;
+import android.support.v7.widget.RecyclerView;
 
-import base.BaseFragment;
+import adapter.MusicListRecycleAdapter;
+import presenter.BasePersenter;
+import presenter.impl.MusicListPersenter;
 
 /**
  * 类    名:  HomeFragment
@@ -13,11 +15,94 @@ import base.BaseFragment;
  * 描    述： ${TODO}
  */
 
-public class MusicListFragment extends BaseFragment
+public class MusicListFragment extends BaseContainerFragment
 {
+
+    private MusicListPersenter mMusicListPersenter;
+
     @Override
-    protected int getFragmentId()
+    protected RecyclerView.Adapter getAdapter()
     {
-        return R.layout.fragment_music_list;
+        return new MusicListRecycleAdapter(getContext(),mMusicListPersenter.getDataList());
     }
+
+    @Override
+    protected BasePersenter getPersenter(BaseContainerFragment baseContainerFragment)
+    {
+        mMusicListPersenter = new MusicListPersenter(baseContainerFragment);
+        mMusicListPersenter.loadListData();
+        return mMusicListPersenter;
+    }
+    //    @BindView(R.id.music_list_recyclerview)
+//    RecyclerView       mMusicListRecyclerview;
+//    @BindView(R.id.music_list_swipe_refresh)
+//    SwipeRefreshLayout mMusicListSwipeRefresh;
+//
+//    private MusicListPersenter      mMusicListPersenter;
+//    private LinearLayoutManager     mLinearLayoutManager;
+//    private MusicListRecycleAdapter adapter;
+//    private List<MusicListBean.PlayListsBean> mDataList;
+//
+//    @Override
+//    protected int getFragmentId()
+//    {
+//        return R.layout.fragment_music_list;
+//    }
+//
+//    @Override
+//    protected void init()
+//    {
+//        super.init();
+//        mMusicListPersenter = new MusicListPersenter(this);
+//        mMusicListPersenter.loadListData();
+//        setViewData();
+//
+//        mMusicListSwipeRefresh.setOnRefreshListener(mRefreshListener);
+//        mMusicListRecyclerview.addOnScrollListener(mOnScrollListener);
+//    }
+//
+//    private void setViewData()
+//    {
+//        mDataList = mMusicListPersenter.getDataList();
+//        mMusicListRecyclerview.setHasFixedSize(true);
+//        mLinearLayoutManager = new LinearLayoutManager(getContext());
+//        adapter = new MusicListRecycleAdapter(getContext(), mDataList);
+//        mMusicListRecyclerview.setLayoutManager(mLinearLayoutManager);
+//        mMusicListRecyclerview.setAdapter(adapter);
+//    }
+//
+//    private SwipeRefreshLayout.OnRefreshListener mRefreshListener =
+//            new SwipeRefreshLayout.OnRefreshListener()
+//            {
+//                @Override
+//                public void onRefresh()
+//                {
+//                    mMusicListPersenter.refresh();
+//                }
+//            };
+//
+//    private RecyclerView.OnScrollListener mOnScrollListener = new RecyclerView.OnScrollListener()
+//    {
+//        @Override
+//        public void onScrollStateChanged(RecyclerView recyclerView, int newState)
+//        {
+//            if (newState == RecyclerView.SCROLL_STATE_IDLE)
+//            {
+//                if (mLinearLayoutManager.findLastVisibleItemPosition() ==
+//                    mMusicListRecyclerview.getAdapter().getItemCount() - 1)
+//                {
+//                    mMusicListPersenter.loadMoreData();
+//                }
+//            }
+//        }
+//    };
+//
+//    @Override
+//    public void onDataLoadSuccess()
+//    {
+//        mDataList = mMusicListPersenter.getDataList();
+//        adapter.notifyDataSetChanged();
+//        mMusicListSwipeRefresh.setRefreshing(false);
+//        Toast.makeText(getContext(), "加载成功", Toast.LENGTH_SHORT).show();
+//    }
 }

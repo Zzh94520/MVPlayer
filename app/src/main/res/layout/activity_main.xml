@@ -3,15 +3,6 @@
                 android:layout_height="match_parent"
                 xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!-- This could be your fragment container, or something -->
-    <FrameLayout
-        android:id="@id/home_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/bottom_Bar" >
-
-    </FrameLayout>
-
     <com.roughike.bottombar.BottomBar
         android:id="@id/bottom_Bar"
         android:layout_width="match_parent"
@@ -21,5 +12,16 @@
         app:bb_inActiveTabColor="#e81d282b"
         app:bb_activeTabColor="#fff"
         android:background="@color/green"/>
+
+
+    <!-- This could be your fragment container, or something -->
+    <FrameLayout
+        android:id="@id/home_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom_Bar" >
+
+    </FrameLayout>
+
 
 </RelativeLayout>

@@ -1,7 +1,6 @@
 package com.example.zzh.qqplayer;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -15,11 +14,11 @@ import com.roughike.bottombar.OnTabSelectListener;
 
 import base.BaseActivity;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import factory.FactoryFragment;
 
 public class MainActivity extends BaseActivity
 {
+
     @BindView(R.id.bottom_Bar)
     BottomBar   mBottomBar;
     @BindView(R.id.home_container)
@@ -36,7 +35,6 @@ public class MainActivity extends BaseActivity
     {
         super.init();
         mBottomBar.setOnTabSelectListener(tabSelectListener);
-//        RecyclerView.LayoutManager layoutManager = mMainRecyclerview.getLayoutManager();
     }
 
     private OnTabSelectListener tabSelectListener = new OnTabSelectListener()
@@ -79,12 +77,4 @@ public class MainActivity extends BaseActivity
         return super.onOptionsItemSelected(item);
     }
 
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
 }
