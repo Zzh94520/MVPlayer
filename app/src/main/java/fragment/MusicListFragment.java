@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import adapter.MusicListRecycleAdapter;
 import presenter.BasePersenter;
 import presenter.impl.MusicListPersenter;
+import widget.BaseResult;
 
 /**
  * 类    名:  HomeFragment
@@ -27,9 +28,9 @@ public class MusicListFragment extends BaseContainerFragment
     }
 
     @Override
-    protected BasePersenter getPersenter(BaseContainerFragment baseContainerFragment)
+    public BasePersenter getPersenter(BaseResult baseResult)
     {
-        mMusicListPersenter = new MusicListPersenter(baseContainerFragment);
+        mMusicListPersenter = new MusicListPersenter(baseResult);
         mMusicListPersenter.loadListData();
         return mMusicListPersenter;
     }

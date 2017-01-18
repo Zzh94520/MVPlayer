@@ -105,5 +105,5 @@ public abstract class BaseContainerFragment extends BaseFragment implements Base
 
     protected abstract RecyclerView.Adapter getAdapter();
 
-    protected abstract BasePersenter getPersenter(BaseContainerFragment baseContainerFragment);
+    protected abstract BasePersenter getPersenter(BaseResult baseResult);
 }

@@ -35,4 +35,5 @@ dependencies {
     compile 'com.github.uncleleonfan:funhttp:1.0'
     compile 'jp.wasabeef:glide-transformations:2.0.1'
     compile 'com.squareup.okhttp3:okhttp:3.5.0'
+    compile 'fm.jiecao:jiecaovideoplayer:5.3'
 }

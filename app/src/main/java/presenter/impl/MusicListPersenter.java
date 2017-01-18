@@ -7,12 +7,11 @@ import com.itheima.leon.funhttplib.NetworkListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import fragment.BaseContainerFragment;
-import fragment.MusicListFragment;
 import model.MusicListBean;
 import network.MusicListRequest;
 import presenter.BasePersenter;
 import utils.URLProviderUtil;
+import widget.BaseResult;
 
 /**
  * 类    名:  MusicListPersenter
@@ -25,14 +24,14 @@ import utils.URLProviderUtil;
 
 public class MusicListPersenter implements BasePersenter<MusicListBean.PlayListsBean>
 {
-    private       MusicListFragment                      musicListFragment;
+    private       BaseResult                      mBaseResult;
     private ArrayList<MusicListBean.PlayListsBean> mListsBeen;
     private static final String  TAG      = "MusicListPersenter";
     private              Handler mHandler = new Handler();
 
-    public MusicListPersenter(BaseContainerFragment baseContainerFragment)
+    public MusicListPersenter(BaseResult baseResult)
     {
-        this.musicListFragment = (MusicListFragment) baseContainerFragment;
+        mBaseResult = baseResult;
         mListsBeen = new ArrayList<MusicListBean.PlayListsBean>();
     }
 
@@ -65,49 +64,53 @@ public class MusicListPersenter implements BasePersenter<MusicListBean.PlayLists
     {
         String url = URLProviderUtil.getYueDanUrl(offset, 10);
         new MusicListRequest(url, mListNetworkListener).execute();
-        //        OkHttpClient client = new OkHttpClient();
-        //        Request request = new Request.Builder().get().url(url).build();
-        //        client.newCall(request).enqueue(new Callback() {
-        //            @Override
-        //            public void onFailure(Call call, IOException e)
-        //            {
-        //
-        //            }
-        //
-        //            @Override
-        //            public void onResponse(Call call, Response response) throws IOException
-        //            {
-        //                Gson gson = new Gson();
-        //                MusicListBean musicListBean =
-        //                        gson.fromJson(response.body().string(), MusicListBean.class);
-        //                mListsBeen.addAll(musicListBean.getPlayLists());
-        //                Log.d(TAG, "onResponse "+mListsBeen.size());
-        //                mHandler.post(new Runnable() {
-        //                    @Override
-        //                    public void run()
-        //                    {
-        //                        musicListFragment.onDataLoadSuccess();
-        //                    }
-        //                });
-        //            }
-        //        });
+//        OkHttpClient client = new OkHttpClient();
+//        Request request = new Request.Builder().get().url(url).build();
+//        client.newCall(request).enqueue(new Callback() {
+//            @Override
+//            public void onFailure(Call call, IOException e)
+//            {
+//                mHandler.post(new Runnable() {
+//                    @Override
+//                    public void run()
+//                    {
+//                        mBaseResult.onDataLoadFailed();
+//                    }
+//                });
+//            }
+//
+//            @Override
+//            public void onResponse(Call call, Response response) throws IOException
+//            {
+//                Gson gson = new Gson();
+//                MusicListBean musicListBean =
+//                        gson.fromJson(response.body().string(), MusicListBean.class);
+//                mListsBeen.addAll(musicListBean.getPlayLists());
+//                mHandler.post(new Runnable() {
+//                    @Override
+//                    public void run()
+//                    {
+//                        mBaseResult.onDataLoadSuccess();
+//                    }
+//                });
+//            }
+//        });
     }
 
-    private NetworkListener<List<MusicListBean.PlayListsBean>> mListNetworkListener =
-            new NetworkListener<List<MusicListBean.PlayListsBean>>()
+    private NetworkListener<MusicListBean> mListNetworkListener =
+            new NetworkListener<MusicListBean>()
             {
                 @Override
                 public void onFailed(String s)
                 {
-                    musicListFragment.onDataLoadFailed();
+                    mBaseResult.onDataLoadFailed();
                 }
 
                 @Override
-                public void onSuccess(List<MusicListBean.PlayListsBean> playListsBeen)
+                public void onSuccess(MusicListBean musicListBean)
                 {
-                    musicListFragment.onDataLoadSuccess();
+                    mListsBeen.addAll(musicListBean.getPlayLists());
+                    mBaseResult.onDataLoadSuccess();
                 }
-
-
             };
 }

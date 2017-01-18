@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import adapter.HomeRecycleAdapter;
 import presenter.BasePersenter;
 import presenter.impl.HomePersenter;
+import widget.BaseResult;
 
 /**
  * 类    名:  HomeFragment
@@ -27,9 +28,9 @@ public class HomeFragment extends BaseContainerFragment
     }
 
     @Override
-    public BasePersenter getPersenter(BaseContainerFragment baseContainerFragment)
+    public BasePersenter getPersenter(BaseResult baseResult)
     {
-        mHomePersenter = new HomePersenter(baseContainerFragment);
+        mHomePersenter = new HomePersenter(baseResult);
         mHomePersenter.loadListData();
         return mHomePersenter;
     }

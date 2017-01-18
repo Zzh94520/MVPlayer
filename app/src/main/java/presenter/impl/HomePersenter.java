@@ -5,12 +5,11 @@ import com.itheima.leon.funhttplib.NetworkListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import fragment.BaseContainerFragment;
-import fragment.HomeFragment;
 import model.HomeBean;
 import network.HomeRequest;
 import presenter.BasePersenter;
 import utils.URLProviderUtil;
+import widget.BaseResult;
 
 /**
  * 类    名:  HomePersenter
@@ -23,12 +22,12 @@ import utils.URLProviderUtil;
 
 public class HomePersenter implements BasePersenter<HomeBean>
 {
-    private HomeFragment mHomeFragment;
+    private BaseResult mBaseResult;
     private List<HomeBean> list ;
 
-    public HomePersenter(BaseContainerFragment baseContainerFragment)
+    public HomePersenter(BaseResult baseResult)
     {
-        mHomeFragment = (HomeFragment) baseContainerFragment;
+        mBaseResult = baseResult;
         list = new ArrayList<HomeBean>();
     }
 
@@ -91,14 +90,14 @@ public class HomePersenter implements BasePersenter<HomeBean>
         @Override
         public void onFailed(String s)
         {
-            mHomeFragment.onDataLoadFailed();
+            mBaseResult.onDataLoadFailed();
         }
 
         @Override
         public void onSuccess(List<HomeBean> homeBeen)
         {
             list.addAll(homeBeen);
-            mHomeFragment.onDataLoadSuccess();
+            mBaseResult.onDataLoadSuccess();
         }
 
     };

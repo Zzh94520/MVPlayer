@@ -24,4 +24,13 @@
     <item name="music_list_swipe_refresh" type="id"/>
     <item name="music_list_recyclerview" type="id"/>
     <item name="item_count" type="id"/>
+    <item name="mv_tablayout" type="id"/>
+    <item name="mv_vp" type="id"/>
+    <item name="mv_page_title" type="id"/>
+    <item name="mv_page_name" type="id"/>
+    <item name="videoplayer" type="id"/>
+    <item name="player_rg" type="id"/>
+    <item name="player_rb_description" type="id"/>
+    <item name="player_rb_comment" type="id"/>
+    <item name="player_rb_relative" type="id"/>
 </resources>
