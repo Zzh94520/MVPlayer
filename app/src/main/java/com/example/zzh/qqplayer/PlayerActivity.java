@@ -22,6 +22,5 @@ public class PlayerActivity extends BaseActivity
     protected void init()
     {
         super.init();
-
     }
 }
